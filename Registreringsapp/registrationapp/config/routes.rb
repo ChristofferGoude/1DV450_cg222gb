@@ -1,7 +1,23 @@
 Rails.application.routes.draw do
-  get 'user/login'
-
-  get 'user/register'
+  resources :users
+  
+  # Different roots set depending on the session status
+  # Logged in
+  constraints lambda { |req| !req.session[:user_id].blank? } do
+    root :to => "api_key#new", :as => "dashboard"   
+  end
+  
+  # Not logged in
+  root :to => "sessions#new"
+  
+  #Other routes used
+  get  '/login'   => 'sessions#new'
+  post '/login'   => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+  get '/register' => 'users#new'
+  get '/authorized' => 'api_key#new'
+  get '/request' => 'api_key#create'
+  get '/admin' => 'users#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

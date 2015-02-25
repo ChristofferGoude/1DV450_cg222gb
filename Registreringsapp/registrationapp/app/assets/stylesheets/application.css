@@ -15,3 +15,11 @@
  *= require foundation_and_overrides
 
  */
+
+/*
+ * Self-made classes
+ */
+
+.top-bar p{
+	color:#fff;
+}

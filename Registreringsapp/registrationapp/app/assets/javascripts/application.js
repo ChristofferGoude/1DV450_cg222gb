@@ -16,5 +16,8 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
-$(function(){ $(document).foundation(); });
+$(document).foundation();
+
+$(document).on('close.fndtn.alert', function(event) {
+  console.log('An alert box has been closed!');
+});
