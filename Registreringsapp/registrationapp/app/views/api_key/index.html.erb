@@ -4,16 +4,14 @@
 	</div>
 </div>
 
-<% @users.each do |user| %>
+<% @apikeys.each do |key| %>
 	<div class="row">
-		<div class="large-4 columns">
-			<p><%= user.email %></p>
+		<div class="large-6 columns">
+			<p><%= key.api_key %></p>
 		</div>
-		<div class="large-4 columns">
-			<p><%= @apikeys.find_by(user_id: user.id) %></p>
-		</div>
-		<div class="large-4 columns">
-			<%= link_to 'Revoke key', "#", {:class => "button secondary expand"} %>
+		<div class="large-6 columns">
+			
+			<%= link_to "Revoke key", {:controller => "api_key", :action => "destroy", :id => key.user_id} %>
 		</div>
 	</div>
 <% end %>

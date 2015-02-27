@@ -4,7 +4,18 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.includes(:api_key)
+    @apikeys = ApiKey.all
+    
+    if logged_in?
+      unless current_user.email == "christoffer.goude@gmail.com"
+        flash[:key] = 'You do not have access to that page!'
+        redirect_to authorized_path
+      end
+    else
+      flash[:login] = 'Please begin by logging in.'
+      redirect_to root_url
+    end
   end
 
   # GET /users/new

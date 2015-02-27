@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   get '/register' => 'users#new'
   get '/authorized' => 'api_key#new'
   get '/request' => 'api_key#create'
-  get '/admin' => 'users#index'
+  get '/revoke' => 'api_key#destroy'
+  get '/admin' => 'api_key#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

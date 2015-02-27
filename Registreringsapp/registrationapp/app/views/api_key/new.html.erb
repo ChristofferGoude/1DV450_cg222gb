@@ -7,6 +7,24 @@
 	</div>
 </div>
 
+<% if flash[:key] %>
+    <div class="row">
+    	<div class="large-12 columns">
+    		<div data-alert class="alert-box warning">
+			  <%= flash[:key] %>
+			  <a href="#" class="close">&times;</a>
+			</div>
+		</div>
+	</div>
+<% end %>
+
+<div class="row">
+	<div class="large-12 columns">
+		<% @api_key.each do |key| %>
+			<p class="panel">Your API key: <%= key.api_key %></p>
+		<% end %>
+	</div>
+</div>
 <div class="row">
 	<div class="large-12 columns">
 		<%= link_to 'Get API Key!', request_path, {:class => "button secondary expand"} %>
