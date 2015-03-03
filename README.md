@@ -16,3 +16,13 @@ Repositorie för kursen Webbramverk (1DV450)
 * Övrigt *
 
 Alla gems finns inkluderade i gemfile.
+
+### Adminuppgifter
+
+* Användarnamn * 
+
+christoffer.goude@gmail.com
+
+* Lösenord * 
+
+asd
