@@ -28,11 +28,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
-      flash[:login] = 'Welcome to the registration app!'
-      redirect_to login_path
+    if @user.save     
+      log_in @user    
+      flash[:key] = 'Welcome to the registration app!'
+      redirect_to authorized_path
     else
-      flash[:register] = 'The registration could not be completed. Please try again!'
+      if @user.email.present?
+        flash[:register] = 'This email adress is not valid or already in use!'
+      else
+        flash[:register] = 'You must enter an email adress!'
+      end
+      
       redirect_to register_path
     end
   end

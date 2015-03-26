@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Event i Söderhamn</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>	
+<div class="icon-bar four-up">
+	<%= link_to "#", {:class => "item"} do %>
+   		<%= image_tag("home.png", :alt => "Home") %>
+    	<label>Home</label>
+	<% end %>
+  	<%= link_to "#", {:class => "item"} do %>
+    	<%= image_tag("login.png", :alt => "Login") %>
+    	<label>Login</label>
+ 	 <% end %>
+ 	 <%= link_to "#", {:class => "item"} do %>
+		<%= image_tag("add.png", :alt => "Add") %>
+    	<label>Add</label>
+  	<% end %>
+  	<%= link_to "#", {:class => "item"} do %>
+    	<%= image_tag("logout.png", :alt => "Logout") %>
+    	<label>Logout</label>
+  	<% end %>
+</div>
+
+<%= yield %>
+
+</body>
+</html>

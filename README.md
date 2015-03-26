@@ -11,7 +11,7 @@ Repositorie för kursen Webbramverk (1DV450)
 
 * B-Crypt *
 
-[Installations-instruktioner](https://rubygems.org/gems/bcrypt-ruby)
+[Installations-instruktioner](https://github.com/codahale/bcrypt-ruby)
 
 * Övrigt *
 
