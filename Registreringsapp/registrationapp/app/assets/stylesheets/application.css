@@ -20,6 +20,11 @@
  * Self-made classes
  */
 
+body{
+	overflow-y:scroll;
+}
+
 .top-bar p{
 	color:#fff;
 }
+

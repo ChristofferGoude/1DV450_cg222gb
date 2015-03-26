@@ -52,8 +52,13 @@ class ApiKeyController < ApplicationController
     else
       flash[:admin] = "There was an issue with revoking this key!"
     end
+    if  current_user.email == "christoffer.goude@gmail.com"
+      redirect_to admin_path
+    else
+      flash[:key] = 'You removed your API key!'
+      redirect_to authorized_path
+    end
     
-    redirect_to admin_path
   end
   
   def checkuniquekey

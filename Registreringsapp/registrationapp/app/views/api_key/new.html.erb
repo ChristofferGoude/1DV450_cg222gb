@@ -1,8 +1,10 @@
 <div class="row">
-	<div class="large-6 columns">
+	<div class="large-12 columns">
 		<h1>Interface</h1>
 	</div>
-	<div class="large-6 columns">
+</div>
+<div class="row">
+	<div class="large-12 columns">
 		<p class="panel">Here you can request an API key for you application. Simply click the button below to recieve one, it will be saved to your user and displayed here if you have one.</p>
 	</div>
 </div>
@@ -18,13 +20,18 @@
 	</div>
 <% end %>
 
-<div class="row">
-	<div class="large-12 columns">
-		<% @api_key.each do |key| %>
-			<p class="panel">Your API key: <%= key.api_key %></p>
-		<% end %>
+<% @api_key.each do |key| %>
+	<div class="row">
+		<div class="large-6 columns">			
+			<p class="panel">Your API key: <%= key.api_key %></p>			
+		</div>
+		<div class="large-6 columns">
+			<p class="panel">
+				<%= link_to "Remove your key", {:controller => "api_key", :action => "destroy", :id => key.user_id} %>
+			</p>
+		</div>
 	</div>
-</div>
+<% end %>
 <div class="row">
 	<div class="large-12 columns">
 		<%= link_to 'Get API Key!', request_path, {:class => "button secondary expand"} %>

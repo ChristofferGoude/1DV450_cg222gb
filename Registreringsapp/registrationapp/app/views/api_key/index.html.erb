@@ -9,8 +9,7 @@
 		<div class="large-6 columns">
 			<p><%= key.api_key %></p>
 		</div>
-		<div class="large-6 columns">
-			
+		<div class="large-6 columns">			
 			<%= link_to "Revoke key", {:controller => "api_key", :action => "destroy", :id => key.user_id} %>
 		</div>
 	</div>
