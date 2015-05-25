@@ -1,5 +1,28 @@
 Rails.application.routes.draw do
+  resources :events, :tags
+  
   root :to => "api#index"
+  
+  scope '/api' do
+    scope '/v1' do
+      scope '/events' do
+        get '/' => 'events#index'
+        post '/' => 'events#create'
+        scope '/:name' do
+          get '/' => 'events#show'
+          put '/' => 'events#update'
+          scope '/tags' do
+            get '/' => 'tags#index'
+            post '/' => 'tags#create'
+            scope '/:name' do
+              get '/' => 'tags#show'
+              put '/' => 'tags#update'
+            end
+          end
+        end
+      end
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
