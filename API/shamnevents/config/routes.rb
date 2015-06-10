@@ -1,25 +1,20 @@
-Rails.application.routes.draw do
-  resources :events, :tags
-  
-  root :to => "api#index"
-  
+Rails.application.routes.draw do 
   scope '/api' do
-    scope '/v1' do
-      scope '/events' do
-        get '/' => 'events#index'
-        post '/' => 'events#create'
-        scope '/:name' do
-          get '/' => 'events#show'
-          put '/' => 'events#update'
-          scope '/tags' do
-            get '/' => 'tags#index'
-            post '/' => 'tags#create'
-            scope '/:name' do
-              get '/' => 'tags#show'
-              put '/' => 'tags#update'
-            end
-          end
-        end
+    scope 'v1' do    
+      
+      post '/auth'        , to: 'sessions#api_auth'
+      get '/events/nearby', to: 'events#nearby'
+      
+      resources :creators do
+        resources :events
+      end
+      
+      resources :events do
+        resources :tags 
+      end
+      
+      resources :tags do
+        resources :events 
       end
     end
   end

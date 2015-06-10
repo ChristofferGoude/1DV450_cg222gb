@@ -1,7 +1,15 @@
 class TagsController < ApplicationController
-  def index
-    @tags = Tag.all
-    respond_with @tags
+  before_action :api_key
+  before_action :offset_params, only: [:index, :nearby]
+  
+  def index 
+    tags = Tag.limit(@limit).offset(@offset)
+    
+    if tags.present?
+      respond_with tags, status: :ok, location: tags_path
+    else
+      render json: {error: 'Could not find any resources at all.'}, status: :not_found
+    end
   end
   
   def create
@@ -15,7 +23,13 @@ class TagsController < ApplicationController
   end
   
   def show
-  
+    @tag = Tag.find_by_id(params[:id])
+    
+    if @tag.present?
+      respond_with @tag, status: :ok, location: tags_path(@tag)
+    else
+      render json: {error: 'Could not find the resource. Check if you are using the right tag_id.'}, status: :not_found
+    end
   end
   
   def update

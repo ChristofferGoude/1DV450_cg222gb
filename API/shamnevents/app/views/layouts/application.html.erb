@@ -10,26 +10,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body>	
-<div class="icon-bar four-up">
-	<%= link_to "#", {:class => "item"} do %>
-   		<%= image_tag("home.png", :alt => "Home") %>
-    	<label>Home</label>
-	<% end %>
-  	<%= link_to "#", {:class => "item"} do %>
-    	<%= image_tag("login.png", :alt => "Login") %>
-    	<label>Login</label>
- 	 <% end %>
- 	 <%= link_to "#", {:class => "item"} do %>
-		<%= image_tag("add.png", :alt => "Add") %>
-    	<label>Add</label>
-  	<% end %>
-  	<%= link_to "#", {:class => "item"} do %>
-    	<%= image_tag("logout.png", :alt => "Logout") %>
-    	<label>Logout</label>
-  	<% end %>
-</div>
-
-<%= yield %>
-
+	<%= yield %>
 </body>
 </html>

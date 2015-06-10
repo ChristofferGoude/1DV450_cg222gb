@@ -11,7 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150525113242) do
+ActiveRecord::Schema.define(version: 20150610141450) do
+
+  create_table "api_keys", force: true do |t|
+    t.string   "access_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "creators", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "password_digest"
+  end
+
+  create_table "creators_events", id: false, force: true do |t|
+    t.integer "creator_id"
+    t.integer "event_id"
+  end
+
+  add_index "creators_events", ["creator_id", "event_id"], name: "index_creators_events_on_creator_id_and_event_id"
 
   create_table "events", force: true do |t|
     t.string   "name"
@@ -20,7 +40,15 @@ ActiveRecord::Schema.define(version: 20150525113242) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "creator_id"
   end
+
+  create_table "events_tags", id: false, force: true do |t|
+    t.integer "event_id"
+    t.integer "tag_id"
+  end
+
+  add_index "events_tags", ["event_id", "tag_id"], name: "index_events_tags_on_event_id_and_tag_id"
 
   create_table "tags", force: true do |t|
     t.string   "name"
@@ -28,5 +56,12 @@ ActiveRecord::Schema.define(version: 20150525113242) do
     t.datetime "updated_at"
     t.integer  "event_id"
   end
+
+  create_table "tags_events", id: false, force: true do |t|
+    t.integer "tag_id"
+    t.integer "event_id"
+  end
+
+  add_index "tags_events", ["tag_id", "event_id"], name: "index_tags_events_on_tag_id_and_event_id"
 
 end
