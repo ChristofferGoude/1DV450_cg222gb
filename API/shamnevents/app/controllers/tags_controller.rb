@@ -41,6 +41,6 @@ class TagsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
       json_params = ActionController::Parameters.new( JSON.parse(request.body.read) )
-      json_params.require(:tag).permit(:name, :event_id)
+      json_params.require(:tag).permit(:name)
     end
 end

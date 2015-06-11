@@ -15,6 +15,8 @@ class EventsController < ApplicationController
   end
     if events.present?
       respond_with events, status: :ok
+    else
+      render json: {error: 'Could not find any resources at all.'}, status: :not_found
     end
   end
   
@@ -26,6 +28,8 @@ class EventsController < ApplicationController
       render json: {message: "The event could not be found!"}
   end
   
+  # Currently experiencing an issue with the creation of Events
+  # Tags can't be added alongside with an event, a SQLite Exception is thrown, unknown why at the moment
   def create
     event = Event.new(event_params)
     
@@ -45,6 +49,6 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       json_params = ActionController::Parameters.new( JSON.parse(request.body.read) )
-      json_params.require(:event).permit(:creator_id, :name, :address, :latitude, :longitude)
+      json_params.require(:event).permit(:creator_id, :name, :address, :latitude, :longitude, tags_attributes: [:name])
     end
 end

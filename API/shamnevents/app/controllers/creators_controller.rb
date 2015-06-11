@@ -2,8 +2,13 @@ class CreatorsController < ApplicationController
   before_action :api_key
   
   def index
-    @creators = Creator.order(:name)
-    respond_with @creators
+    creators = Creator.order(:name)
+
+    if creators.present?
+      respond_with creators
+    else
+      render json: {error: 'Could not find any resources at all.'}, status: :not_found
+    end
   end
 
   def create
@@ -29,6 +34,6 @@ class CreatorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def creator_params
       json_params = ActionController::Parameters.new( JSON.parse(request.body.read) )
-      json_params.require(:creator).permit(:name)
+      json_params.require(:creator).permit(:name, :password)
     end
 end

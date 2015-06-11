@@ -5,12 +5,12 @@ Rails.application.routes.draw do
       post '/auth'        , to: 'sessions#api_auth'
       get '/events/nearby', to: 'events#nearby'
       
-      resources :creators do
-        resources :events
-      end
-      
       resources :events do
         resources :tags 
+      end
+      
+      resources :creators do
+        resources :events
       end
       
       resources :tags do

@@ -6,7 +6,7 @@ class Tag < ActiveRecord::Base
   
   def serializable_hash (options={})
     options = {
-      only: [:id, :name],
+      only: [:name],
       methods: [:self_ref]
       }.update(options)
     super(options)

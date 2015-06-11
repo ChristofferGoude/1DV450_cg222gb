@@ -5,6 +5,14 @@ class Creator < ActiveRecord::Base
   
   has_secure_password
   
+  def serializable_hash (options={})
+    options = {
+      only: [:name],
+      methods: [:self_ref]
+      }.update(options)
+    super(options)
+  end
+  
   private
   
   def self_ref

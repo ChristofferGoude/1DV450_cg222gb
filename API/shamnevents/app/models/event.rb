@@ -6,14 +6,14 @@ class Event < ActiveRecord::Base
   belongs_to :creator
   has_many :tags
   
+  accepts_nested_attributes_for :tags
+
   def serializable_hash (options={})
     options = {
-      # Declare what we want to show
-      only: [:id, :name, :address, :latitude, :longitude],
+      only: [:name, :address, :latitude, :longitude],
       include: [:tags],
       methods: [:self_ref]
     }.update(options)
-
 
     super(options)
   end
@@ -30,7 +30,6 @@ class Event < ActiveRecord::Base
       :link => "#{Rails.configuration.baseurl}#{Rails.application.routes.url_helpers.creator_path(creator)}" 
     }
   end
-
 end  
 
 
