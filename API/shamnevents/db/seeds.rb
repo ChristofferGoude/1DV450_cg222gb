@@ -17,6 +17,6 @@ tag2 = Tag.create(name: "Best Tag")
 tag3 = Tag.create(name: "Next Tag")
 
 Event.delete_all
-Event.create(creator_id: creator1.id, name: "Concert", latitude: 61.3055762, longitude: 17.0628102, tags: [tag1])
-Event.create(creator_id: creator2.id, name: "Theater show", latitude: 61.7273909, longitude: 17.10740099, tags: [tag1, tag2, tag3])
-Event.create(creator_id: creator3.id, name: "Car race", latitude: 57.70887, longitude: 11.974559999, tags: [tag2, tag3])
+Event.create(creator_id: creator1.id, name: "Concert", latitude: 61.3055762, longitude: 17.0628102)
+Event.create(creator_id: creator2.id, name: "Theater show", latitude: 61.7273909, longitude: 17.10740099)
+Event.create(creator_id: creator3.id, name: "Car race", latitude: 57.70887, longitude: 11.974559999)

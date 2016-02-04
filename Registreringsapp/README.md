@@ -15,14 +15,24 @@ Repositorie för registreringsapplikationen
 
 * Övrigt *
 
+rake db:seed, för att populera databasen med några användare och nycklar.
+
 Alla gems finns inkluderade i gemfile.
 
-### Adminuppgifter
+### Användaruppgifter för tester
 
-* Användarnamn * 
-
+* Admin* 
 christoffer.goude@gmail.com
+admin
 
-* Lösenord * 
+* Användare 2 nycklar *
+test@test.se
+test
 
-asd
+* Användare 1 nyckel *
+test2@test.se
+test
+
+* Användare utan nyckel * 
+test3@test.se
+test

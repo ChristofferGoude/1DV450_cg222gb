@@ -47,7 +47,7 @@ class ApiKeyController < ApplicationController
   
   def destroy ()
     # Remove a users API key
-    if ApiKey.destroy_all(:user_id => params[:id])
+    if ApiKey.destroy_all(:id => params[:id])
       flash[:admin] = "The chosen API key was revoked!"
     else
       flash[:admin] = "There was an issue with revoking this key!"
@@ -62,13 +62,13 @@ class ApiKeyController < ApplicationController
   end
   
   def checkuniquekey
-    if ApiKey.where(:user_id => current_user.id).blank?
+    ApiKey.where(:user_id => current_user.id).blank?
       # User has no key
-    else
+    #else
       # User has a key already!
-      flash[:key] = 'You already have an API key!'
-      redirect_to authorized_path
-    end
+      #flash[:key] = 'You already have an API key!'
+      #redirect_to authorized_path
+    #end
   end
 end
 
