@@ -18,7 +18,9 @@
 	    <li class="name">
 	      <h1><a href="#">RegistrationAPP</a></h1>
 	    </li>
-	    <li class="toggle-topbar"><a href="#"><span>Logged in</span></a></li>
+	    <% if logged_in? %>
+	    	<li class="toggle-topbar"><a href="#"><span>Logged in</span></a></li>
+	  	<% end %>
 	  </ul>
 	
 	  <section class="top-bar-section">

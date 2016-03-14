@@ -1,17 +1,19 @@
 <div class="row">
 	<div class="large-12 columns">
-		<h1>Admin interface</h1>
+		<h1>Key overview</h1>
 	</div>
 </div>
 
 <% @apikeys.each do |key| %>
 	<div class="row">
-		<div class="large-6 columns">
-			<p><%= key.api_key %></p>
+		<div class="large-10 columns">
+			<p class="panel">
+				<b>Application name:</b> <%= key.app_name %> <b>API Key:</b> <%= key.api_key %>
+			</p>
 		</div>
-		<div class="large-6 columns">			
-			<%= link_to "Revoke key", {:controller => "api_key", :action => "destroy", :id => key.id} %>
-		</div>
+		<div class="large-2 columns">
+			<%= button_to "Remove", {:controller => "api_key", :action => "destroy", :id => key.id}, {:method => :delete, :class => "panel button alert expand"} %>
+		</div>						
 	</div>
 <% end %>
 
@@ -25,6 +27,12 @@
 		</div>
 	</div>
 <% end %>
+
+<div class="row">
+	<div class="large-12 columns">
+		<%= link_to 'New application', newapp_path, {:class => "button secondary expand"} %>
+	</div>
+</div>
 
 <div class="row">
 	<div class="large-12 columns">

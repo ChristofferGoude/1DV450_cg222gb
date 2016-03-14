@@ -1,11 +1,11 @@
 <div class="row">
 	<div class="large-12 columns">
-		<h1>Interface</h1>
+		<h1>New application</h1>
 	</div>
 </div>
 <div class="row">
 	<div class="large-12 columns">
-		<p class="panel">Here you can request an API key for you application. Simply click the button below to recieve one, it will be saved to your user and displayed here if you have one.</p>
+		<p class="panel">Here you can create a new application and receive an API key.</p>
 	</div>
 </div>
 
@@ -20,23 +20,22 @@
 	</div>
 <% end %>
 
-<% @api_key.each do |key| %>
+<%= form_for(@api_key) do |f| %>	
 	<div class="row">
-		<div class="large-6 columns">			
-			<p class="panel">Your API key: <%= key.api_key %></p>			
-		</div>
-		<div class="large-6 columns">
-			<p class="panel">
-				<%= link_to "Remove your key", {:controller => "api_key", :action => "destroy", :id => key.id} %>
-			</p>
-		</div>
+		<div class="large-12 columns">
+			<div class="field">
+			    <%= f.label :app_name %><br>
+			    <%= f.text_field :app_name %>
+		  	</div>
+	  	</div>
+		<div class="large-12 columns">
+		  	<div class="actions">
+		    	<%= f.submit "Register new application", :class => "button expand" %>
+		  	</div>	  	
+	  	</div>
 	</div>
 <% end %>
-<div class="row">
-	<div class="large-12 columns">
-		<%= link_to 'Get API Key!', request_path, {:class => "button secondary expand"} %>
-	</div>
-</div>
+
 <div class="row">
 	<div class="large-12 columns">
 		<%= link_to 'Log Out', logout_path, {:class => "button secondary expand"} %>

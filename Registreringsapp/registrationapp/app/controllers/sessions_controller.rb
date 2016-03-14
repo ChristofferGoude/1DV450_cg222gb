@@ -10,12 +10,8 @@ class SessionsController < ApplicationController
       # Log the user in and redirect to the user's show page.
       log_in user
       
-      # Checks the status of the logged in user
-      if user.email == "christoffer.goude@gmail.com"
-        redirect_to admin_path     
-      else
-        redirect_to authorized_path
-      end 
+      # Redo admin check via helper
+      redirect_to index_path
     else
       # Create an error message.
       flash[:login] = 'Invalid email/password combination!'

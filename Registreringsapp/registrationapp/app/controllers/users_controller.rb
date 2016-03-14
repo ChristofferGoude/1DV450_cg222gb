@@ -23,6 +23,19 @@ class UsersController < ApplicationController
     @user = User.new
   end
   
+  # GET /users/:id
+  def show
+    if logged_in?
+      unless current_user.email == "christoffer.goude@gmail.com"
+        flash[:key] = 'You do not have access to that page!'
+        redirect_to authorized_path
+      end
+    else
+      flash[:login] = 'Please begin by logging in.'
+      redirect_to root_url
+    end
+  end
+  
   # POST /users
   # POST /users.json
   def create
