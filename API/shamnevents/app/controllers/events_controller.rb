@@ -49,6 +49,6 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       json_params = ActionController::Parameters.new( JSON.parse(request.body.read) )
-      json_params.require(:event).permit(:creator_id, :name, :address, :latitude, :longitude, tags_attributes: [:name])
+      json_params.require(:event).permit(:creator_id, :name, :address, :latitude, :longitude)
     end
 end
