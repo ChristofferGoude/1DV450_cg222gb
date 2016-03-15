@@ -2,9 +2,13 @@ class Event < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   
   validates :name, presence: true
+  validates :address, presence: true
+  validates :longitude, presence: true
+  validates :latitude, presence: true
+  validates :creator_id, presence: true
   
   belongs_to :creator
-  has_many :tags
+  has_and_belongs_to_many :tags
   
   accepts_nested_attributes_for :tags
 
